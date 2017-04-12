@@ -95,5 +95,9 @@ for (link.to.scrape in data.web.pages.main)
   sapply(data.web.pages.sub, scrape.zipfiles)
 }
 
+
+
+
+
 # Tracking time of execution
 print(Sys.time() - start.time)
