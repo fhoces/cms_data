@@ -95,9 +95,21 @@ for (link.to.scrape in data.web.pages.main)
   sapply(data.web.pages.sub, scrape.zipfiles)
 }
 
-
-
-
-
 # Tracking time of execution
 print(Sys.time() - start.time)
+
+
+#Counting number of files in each folder
+num.of.files <- cbind(data.titles, "num.files" = rep(NA, length(data.titles))) 
+i <- 0
+for (folder in data.titles) 
+{
+  i <- i + 1
+  clean.name <- gsub(" ", "_",folder)
+  clean.name <- gsub("/", "_",clean.name)
+  setwd(paste(MY.PATH, paste(clean.name, "/", sep=""), sep= ""))
+  num.of.files[i, "num.files"] <- length(dir())
+  setwd(MY.PATH)
+}
+View(num.of.files)
+
